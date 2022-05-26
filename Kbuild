@@ -41,6 +41,9 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += display/trustedvm-waipio-sde-display-mtp-overlay.d
 		display/trustedvm-waipio-sde-display-qrd-overlay.dtbo
 endif
 
+dtbo-$(CONFIG_ARCH_KHAJE) += display/khaje-sde.dtbo \
+		display/khaje-sde-display-idp-overlay.dtbo
+
 always-y    := $(dtb-y) $(dtbo-y)
 subdir-y    := $(dts-dirs)
 clean-files    := *.dtb *.dtbo
