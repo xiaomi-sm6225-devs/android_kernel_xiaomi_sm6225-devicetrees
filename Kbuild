@@ -20,6 +20,7 @@ endif
 ifeq ($(CONFIG_ARCH_KHAJE), y)
 dtbo-y += khaje-audio.dtbo \
 		khaje-audio-idp.dtbo \
+		khaje-audio-qrd.dtbo \
 		khaje-nowcd.dtbo
 endif
 
