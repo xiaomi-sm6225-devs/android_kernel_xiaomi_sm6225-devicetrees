@@ -41,6 +41,10 @@ ifeq ($(CONFIG_ARCH_SDXPINN), y)
 dtbo-y +=  sdxpinn-audio.dtbo
 endif
 
+ifeq ($(TARGET_SUPPORT), sa410m)
+dtbo-y += sa410m-audio-idp.dtbo
+endif
+
  always-y    := $(dtb-y) $(dtbo-y)
  subdir-y    := $(dts-dirs)
  clean-files    := *.dtb *.dtbo
