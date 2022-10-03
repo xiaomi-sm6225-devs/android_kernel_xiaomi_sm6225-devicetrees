@@ -24,6 +24,7 @@ dtbo-y += khaje-audio.dtbo \
 		khaje-audio-idp-nopmi.dtbo \
                 khajeg-audio-idp.dtbo \
                 khajeg-audio-idp-90hz.dtbo \
+		khajeg-audio-qrd.dtbo \
 		khaje-nowcd.dtbo
 endif
 
