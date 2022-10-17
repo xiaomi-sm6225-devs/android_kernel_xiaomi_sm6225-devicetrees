@@ -76,7 +76,7 @@
 	};
 };
 
-&i2c_3 {
+&qupv3_se2_i2c {
 	status = "ok";
 	wcd934x_cdc: tavil_codec {
 		compatible = "qcom,tavil-i2c";
