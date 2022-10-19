@@ -224,8 +224,8 @@
 		qcom,wsa-max-devs = <1>;
 		//qcom,wsa-devs = <&wsa881x_i2c_e>;
 		qcom,wsa-aux-dev-prefix = "SpkrMono";
-		qcom,msm_audio_ssr_devs = <&audio_gpr>, <&bolero_cdc>,
-					  <&lpi_tlmm>;
+		qcom,msm_audio_ssr_devs = <&audio_gpr>, <&lpi_tlmm>,
+					<&bolero_cdc>;
 	};
 };
 
