@@ -17,6 +17,10 @@ ifeq ($(CONFIG_ARCH_SA8155), y)
 dtbo-y +=  sa8155-audio.dtbo
 endif
 
+ifeq ($(CONFIG_QTI_QUIN_GVM), y)
+dtbo-y +=  sa8155-vm-audio.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_KHAJE), y)
 dtbo-y += khaje-audio.dtbo \
 		khaje-audio-idp.dtbo \
