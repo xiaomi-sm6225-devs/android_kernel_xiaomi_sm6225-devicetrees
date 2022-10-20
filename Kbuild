@@ -34,6 +34,10 @@ dtbo-y += khaje-audio.dtbo \
 		khaje-nowcd.dtbo
 endif
 
+ifeq ($(CONFIG_ARCH_SDXPINN), y)
+dtbo-y +=  sdxpinn-audio.dtbo
+endif
+
  always-y    := $(dtb-y) $(dtbo-y)
  subdir-y    := $(dts-dirs)
  clean-files    := *.dtb *.dtbo
