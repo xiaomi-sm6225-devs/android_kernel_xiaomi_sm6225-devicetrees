@@ -1,4 +1,6 @@
 #include "sdx-audio-lpass.dtsi"
+#include "bindings/qcom,audio-ext-clk.h"
+#include "bindings/qcom,gpr.h"
 
 &soc {
 	snd_934x: sound-tavil {
