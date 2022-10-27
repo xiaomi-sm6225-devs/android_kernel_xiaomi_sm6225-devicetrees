@@ -36,6 +36,7 @@ dtbo-y += khaje-audio.dtbo \
 		khajeg-audio-qrd-nopmi.dtbo \
 		khaje-audio-atp.dtbo \
 		khaje-audio-idp-pm8010.dtbo \
+		khaje-audio-idp-usbc.dtbo \
 		khaje-nowcd.dtbo
 endif
 
