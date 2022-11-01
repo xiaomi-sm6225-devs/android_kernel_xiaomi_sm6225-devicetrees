@@ -41,7 +41,11 @@ dtbo-y += khaje-audio.dtbo \
 endif
 
 ifeq ($(CONFIG_ARCH_SDXPINN), y)
-dtbo-y +=  sdxpinn-audio.dtbo
+	ifeq ($(TARGET_SUPPORT), sa525m)
+		dtbo-y += sa525m-audio.dtbo
+	else
+		dtbo-y +=  sdxpinn-audio.dtbo
+	endif
 endif
 
 ifeq ($(TARGET_SUPPORT), sa410m)

@@ -1,0 +1,46 @@
+#include "sa525m-audio-lpass.dtsi"
+#include "bindings/qcom,audio-ext-clk.h"
+#include "bindings/qcom,gpr.h"
+
+&soc {
+
+		codec_vreg: regulator-codec-tlv320aic3x {
+		compatible = "regulator-fixed";
+		regulator-name = "codec_vreg";
+		startup-delay-us = <100>;
+		enable-active-high;
+	};
+
+		snd_tlv3x: sound-auto {
+		compatible = "qcom,sdx-asoc-snd-auto";
+		qcom,model = "sdx-auto-i2s-snd-card";
+		qcom,prim_mi2s_aux_master = <&prim_master>;
+		qcom,prim_mi2s_aux_slave = <&prim_slave>;
+		qcom,sec_mi2s_aux_master = <&sec_master_slave>;
+		qcom,sec_mi2s_aux_slave = <&sec_slave>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&a2b_cdc_sel_default>, <&i2s_mclk_active>;
+
+		asoc-codec-names = "tlv320aic3x-codec", "msm-stub-codec.1";
+	};
+};
+
+
+&qupv3_se2_i2c {
+	tlv320aic3x_codec: tlv320aic3x@18 {
+		compatible = "ti,tlv320aic3x";
+		reg = <0x18>;
+		gpio-reset = <&tlmm 92 0>;
+		reset-inverted;
+		AVDD-supply = <&codec_vreg>;
+		IOVDD-supply = <&codec_vreg>;
+		ai3x-ocmv = <1>;
+	};
+
+	eeprom@52 {
+		compatible = "atmel,24c128";
+		reg = <0x52>;
+		pagesize = <32>;
+	};
+};
