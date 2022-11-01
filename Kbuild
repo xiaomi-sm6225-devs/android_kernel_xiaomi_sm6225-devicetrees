@@ -13,6 +13,10 @@ dtbo-y += kalama-audio.dtbo \
                  kalama-sg-audio-hhg.dtbo
 endif
 
+ifeq ($(CONFIG_ARCH_MONACO), y)
+dtbo-y += monaco-dmic-audio.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_SA8155), y)
 dtbo-y +=  sa8155-audio.dtbo
 endif
