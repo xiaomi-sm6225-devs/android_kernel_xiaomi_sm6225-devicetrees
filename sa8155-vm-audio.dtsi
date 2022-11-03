@@ -442,14 +442,6 @@
 	};
 };
 
-&dai_pri_auxpcm{
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&pri_aux_pcm_clk_active &pri_aux_pcm_sync_active
-			 &pri_aux_pcm_din_active &pri_aux_pcm_dout_active>;
-	pinctrl-1 = <&pri_aux_pcm_clk_sleep &pri_aux_pcm_sync_sleep
-			 &pri_aux_pcm_din_sleep &pri_aux_pcm_dout_sleep>;
-};
-
 &audio_apr {
 	q6core: qcom,q6core-audio {
 		compatible = "qcom,q6core-audio";
