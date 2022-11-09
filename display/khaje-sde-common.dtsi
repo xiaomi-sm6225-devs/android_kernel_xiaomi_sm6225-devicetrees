@@ -288,7 +288,7 @@
 		frame-threshold-time-us = <1000>;
 		reg =   <0x5e94000 0x400>,
 			<0x5f08000 0x4>,
-			<0x0ae36000 0x300>;
+			<0x5e6b800 0x300>;
 		reg-names = "dsi_ctrl", "disp_cc_base", "mdp_intf_base";
 		interrupt-parent = <&mdss_mdp>;
 		interrupts = <4 0>;
