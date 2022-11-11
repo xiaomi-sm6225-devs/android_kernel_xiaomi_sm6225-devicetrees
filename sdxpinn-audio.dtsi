@@ -34,8 +34,3 @@
 		};
 	};
 };
-
-&audio_co_heap {
-	status = "okay";
-	memory-region = <&audio_heap_mem>;
-};
