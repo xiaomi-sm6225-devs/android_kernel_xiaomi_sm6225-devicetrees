@@ -17,6 +17,10 @@ ifeq ($(CONFIG_ARCH_SA8155), y)
 dtbo-y +=  sa8155-audio.dtbo
 endif
 
+ifeq ($(CONFIG_QTI_QUIN_GVM), y)
+dtbo-y +=  sa8155-vm-audio.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_KHAJE), y)
 dtbo-y += khaje-audio.dtbo \
 		khaje-audio-idp.dtbo \
@@ -30,7 +34,22 @@ dtbo-y += khaje-audio.dtbo \
 		khajeg-audio-qrd-hvdcp3p5.dtbo \
 		khaje-audio-qrd-nopmi.dtbo \
 		khajeg-audio-qrd-nopmi.dtbo \
+		khaje-audio-atp.dtbo \
+		khaje-audio-idp-pm8010.dtbo \
+		khaje-audio-idp-usbc.dtbo \
 		khaje-nowcd.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_SDXPINN), y)
+	ifeq ($(TARGET_SUPPORT), sa525m)
+		dtbo-y += sa525m-audio.dtbo
+	else
+		dtbo-y +=  sdxpinn-audio.dtbo
+	endif
+endif
+
+ifeq ($(TARGET_SUPPORT), sa410m)
+dtbo-y += sa410m-audio-idp.dtbo
 endif
 
  always-y    := $(dtb-y) $(dtbo-y)
