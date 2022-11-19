@@ -1,9 +1,10 @@
 #include "sdx-audio-lpass.dtsi"
+#include "sdxpinn-audio-overlay.dtsi"
 #include "bindings/qcom,audio-ext-clk.h"
 #include "bindings/qcom,gpr.h"
 
-&soc {
-	snd_934x: sound-tavil {
+&spf_core_platform {
+	sdxpinn_snd: sound {
 		compatible = "qcom,sdx-asoc-snd-tavil";
 		qcom,model = "sdx-tavil-i2s-snd-card";
 		qcom,prim_mi2s_master = <&prim_master>;
