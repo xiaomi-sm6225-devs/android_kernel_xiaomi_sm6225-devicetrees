@@ -119,7 +119,7 @@
 		qcom,rx_swr_ch_map = <0 HPH_L 0x1 0 HPH_L>,
 			<0 HPH_R 0x2 0 HPH_R>,
 			<1 COMP_L 0x1 0 COMP_L>, <1 COMP_R 0x2 0 COMP_R>;
-		qcom,tx_swr_ch_map = <0 ADC1 0x1 0 ADC1>,
+		qcom,tx_swr_ch_map = <0 ADC1 0x1 0 DMIC0>,
 			<0 ADC2 0x2 0 ADC2>, <0 DMIC0 0x4 0 ADC3>,
 			<0 MBHC 0x8 0 ADC4>, <1 DMIC0 0x1 0 DMIC0>,
 			<1 DMIC1 0x2 0 DMIC1>, <1 ADC1 0x4 0 DMIC2>,
@@ -210,10 +210,8 @@
 	qcom,tert-mi2s-gpios = <&tert_mi2s_gpios>;
 	qcom,quat-mi2s-gpios = <&quat_mi2s_gpios>;
 
-	nvmem-cell-names = "adsp_variant";
 	asoc-codec  = <&stub_codec>, <&bolero>, <&rouleur_codec>;
 	asoc-codec-names = "msm-stub-codec.1", "bolero_codec", "rouleur_codec";
-	qcom,codec-max-aux-devs = <0>;
 	qcom,msm_audio_ssr_devs = <&audio_apr>, <&q6core>, <&bolero>,
 				  <&lpi_tlmm>;
 };
