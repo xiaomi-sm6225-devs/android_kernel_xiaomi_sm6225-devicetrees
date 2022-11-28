@@ -753,3 +753,17 @@ swr_dmic_01: dmic_swr@58350220 {
 	qcom,swr-dmic-supply = "MIC BIAS1 Standalone";
 	qcom,wcd-handle = <&wcd938x_codec>;
 };
+
+PM5100 SPMI node
+
+pm5100_spmi: Child node of SPMI bus required for besbev codec
+	     in order to access SPMI register to reset the peripheral.
+
+Required properties:
+ -compatible: "qcom,pm5100-spmi";
+
+&spmi_bus {
+	pm5100_cdc: qcom,pm5100-cdc {
+	compatible = "qcom,pm5100-spmi";
+	};
+};
