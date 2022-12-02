@@ -98,7 +98,7 @@
 
 		cdc-buck-sido-supply = <&pmx75_l6>;
 		qcom,cdc-buck-sido-voltage = <1800000 1800000>;
-		qcom,cdc-buck-sido-current = <250000>;
+		qcom,cdc-buck-sido-current = <500000>;
 
 		cdc-vdd-tx-h-supply = <&pmx75_l6>;
 		qcom,cdc-vdd-tx-h-voltage = <1800000 1800000>;
