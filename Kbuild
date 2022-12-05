@@ -52,6 +52,10 @@ ifeq ($(CONFIG_ARCH_SDXPINN), y)
 	endif
 endif
 
+ifeq ($(CONFIG_ARCH_SDXBAAGHA), y)
+dtbo-y +=  sdxbaagha-audio.dtbo
+endif
+
 ifeq ($(TARGET_SUPPORT), sa410m)
 dtbo-y += sa410m-audio-idp.dtbo
 endif
