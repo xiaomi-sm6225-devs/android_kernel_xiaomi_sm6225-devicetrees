@@ -6,14 +6,15 @@
 	qcom,smmu-sid-mask = /bits/ 64 <0xf>;
 };
 &audio_apr {
+
+	lpass_audio_hw_vote: vote_lpass_audio_hw {
+		compatible = "qcom,audio-ref-clk";
+		qcom,codec-ext-clk-src = <AUDIO_LPASS_AUDIO_HW_VOTE>;
+		#clock-cells = <1>;
+	};
+
 	q6core: qcom,q6core-audio {
 		compatible = "qcom,q6core-audio";
-
-		lpass_audio_hw_vote: vote_lpass_audio_hw {
-			compatible = "qcom,audio-ref-clk";
-			qcom,codec-ext-clk-src = <AUDIO_LPASS_AUDIO_HW_VOTE>;
-			#clock-cells = <1>;
-		};
 
 	};
 };
@@ -228,6 +229,6 @@
 };
 
 &aliases {
-	swr0 = "/soc/audio_apr/q6core/bolero-cdc/va-macro@a730000/va_swr_master";
-	swr1 = "/soc/audio_apr/q6core/bolero-cdc/rx-macro@a600000/rx_swr_master";
+	swr0 = "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/va-macro@0a730000/va_swr_master";
+	swr1 = "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/rx-macro@0a600000/rx_swr_master";
 };
