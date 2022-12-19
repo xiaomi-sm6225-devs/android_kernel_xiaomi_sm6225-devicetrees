@@ -1,8 +1,8 @@
-#include "sdxpinn-wcd.dtsi"
+#include "sdxbaagha-wcd.dtsi"
 #include "sdx-wsa881x.dtsi"
 #include "bindings/qcom,audio-ext-clk.h"
 
-&sdxpinn_snd {
+&sdxbaagha_snd {
 	qcom,audio-routing =
 		"RX_BIAS", "MCLK",
 		"MADINPUT", "MCLK",

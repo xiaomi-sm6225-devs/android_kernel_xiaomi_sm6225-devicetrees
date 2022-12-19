@@ -9,12 +9,19 @@
 
 	qcom,msm-adsp-loader {
 		compatible = "qcom,adsp-loader";
+		qcom,rproc-handle = <&modem_pas>;
 		qcom,adsp-state = <0>;
 		qcom,proc-img-to-load = "modem";
 	};
 
+	adsp_notify: qcom,msm-adsp-notify {
+		status = "ok";
+		compatible = "qcom,adsp-notify";
+		qcom,rproc-handle = <&modem_pas>;
+	};
+
 	qcom,msm-audio-ion {
-		compatible = "qcom,msm-audio-ion-cma";
+		compatible = "qcom,msm-audio-ion";
 		qcom,scm-mp-enabled;
 		memory-region = <&audio_heap_mem>;
 	};
@@ -80,4 +87,34 @@
 				&sec_din_sleep>;
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
+
+	tert_master: tert_master_pinctrl {
+		compatible = "qcom,msm-cdc-pinctrl";
+		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-0 = <&tert_ws_active_master
+				&tert_sck_active_master
+				&tert_dout_active
+				&tert_din_active>;
+		pinctrl-1 = <&tert_ws_sleep
+				&tert_sck_sleep
+				&tert_dout_sleep
+				&tert_din_sleep>;
+		qcom,mi2s-auxpcm-cdc-gpios;
+	};
+
+	tert_slave: tert_slave_pinctrl {
+		status = "disabled";
+		compatible = "qcom,msm-cdc-pinctrl";
+		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-0 = <&tert_ws_active_slave
+				&tert_sck_active_slave
+				&tert_dout_active
+				&tert_din_active>;
+		pinctrl-1 = <&tert_ws_sleep
+				&tert_sck_sleep
+				&tert_dout_sleep
+				&tert_din_sleep>;
+		qcom,mi2s-auxpcm-cdc-gpios;
+	};
+
 };
