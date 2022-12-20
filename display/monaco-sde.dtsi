@@ -344,6 +344,7 @@
 	qcom,dsi-pll-ssc-en;
 	qcom,dsi-pll-ssc-mode = "down-spread";
 	qcom,panel-allow-phy-poweroff;
+	qcom,phy-clamp-enable;
 	pll_codes_region = <&dsi_pll_codes_data>;
 	memory-region = <&dfps_data_memory>;
 };
