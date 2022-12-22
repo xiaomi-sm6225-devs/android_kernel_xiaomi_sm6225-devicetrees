@@ -19,7 +19,9 @@ dtbo-y += monaco-dmic-audio.dtbo \
 		monaco-slate-atp-v1-audio.dtbo \
 		monaco-slate-dmic-idp-v1-audio.dtbo \
 		monaco-slate-wdp-v1-audio.dtbo \
-		monaco-slate-wsa-idp-v3-audio.dtbo
+		monaco-slate-wsa-idp-v3-audio.dtbo \
+		monaco-wsa-audio.dtbo \
+		monaco-amic-audio-idp-v2.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_SA8155), y)
