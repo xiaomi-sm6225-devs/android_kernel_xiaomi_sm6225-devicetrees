@@ -29,11 +29,10 @@ endif
 ifeq ($(CONFIG_QTI_QUIN_GVM), y)
 dtbo-y +=  sa8155-vm-audio.dtbo
 dtbo-y +=  sa8195-vm-audio.dtbo
-  ifeq ($(QTI_TECHPACK), y)
-      dtbo-y +=  direwolf-vm-lv-audio.dtbo
-  else
-      dtbo-y +=  direwolf-vm-la-audio.dtbo
-  endif
+dtbo-y +=  direwolf-vm-lv-audio.dtbo
+dtbo-y +=  direwolf-vm-la-audio.dtbo
+dtbo-y +=  lemans-vm-lv-audio.dtbo
+dtbo-y +=  lemans-vm-la-audio.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_LEMANS), y)
