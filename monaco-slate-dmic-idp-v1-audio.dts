@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "monaco-audio-overlay.dtsi"
+#include "monaco-slate-dmic-audio.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Monaco IDP V1.0";

@@ -14,7 +14,12 @@ dtbo-y += kalama-audio.dtbo \
 endif
 
 ifeq ($(CONFIG_ARCH_MONACO), y)
-dtbo-y += monaco-dmic-audio.dtbo
+dtbo-y += monaco-dmic-audio.dtbo \
+		monaco-slate-amic-idp-v2-audio.dtbo \
+		monaco-slate-atp-v1-audio.dtbo \
+		monaco-slate-dmic-idp-v1-audio.dtbo \
+		monaco-slate-wdp-v1-audio.dtbo \
+		monaco-slate-wsa-idp-v3-audio.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_SA8155), y)
@@ -23,6 +28,10 @@ endif
 
 ifeq ($(CONFIG_QTI_QUIN_GVM), y)
 dtbo-y +=  sa8155-vm-audio.dtbo
+endif
+
+ifeq ($(CONFIG_ARCH_LEMANS), y)
+dtbo-y +=  lemans-audio.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_KHAJE), y)
