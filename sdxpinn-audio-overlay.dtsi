@@ -1,5 +1,5 @@
 #include "sdxpinn-wcd.dtsi"
-#include "sdx-wsa881x.dtsi"
+#include "sdxpinn-wsa881x.dtsi"
 #include "bindings/qcom,audio-ext-clk.h"
 
 &sdxpinn_snd {
