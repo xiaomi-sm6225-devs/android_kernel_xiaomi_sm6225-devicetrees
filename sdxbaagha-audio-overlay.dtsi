@@ -1,5 +1,5 @@
 #include "sdxbaagha-wcd.dtsi"
-#include "sdx-wsa881x.dtsi"
+#include "sdxbaagha-wsa881x.dtsi"
 #include "bindings/qcom,audio-ext-clk.h"
 
 &sdxbaagha_snd {
@@ -76,7 +76,7 @@
 	};
 };
 
-&qupv3_se2_i2c {
+&qupv3_se4_i2c {
 	status = "ok";
 	wcd934x_cdc: tavil_codec {
 		compatible = "qcom,tavil-i2c";
