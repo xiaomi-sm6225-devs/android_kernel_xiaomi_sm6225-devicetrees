@@ -640,6 +640,10 @@
 		dma-coherent;
 	};
 
+	spf_msm_audio_ion_cma: qcom,spf-msm-audio-ion-cma {
+		compatible = "qcom,msm-audio-ion-cma";
+	};
+
 	spf_tdm_pri_rx: qcom,spf-msm-dai-tdm-pri-rx {
 		compatible = "qcom,msm-pcm-pinctrl";
 		pinctrl-names = "default", "active";
