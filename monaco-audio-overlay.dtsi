@@ -210,6 +210,7 @@
 	qcom,mi2s-audio-intf = <1>;
 	qcom,tdm-audio-intf = <0>;
 	qcom,wcn-btfm = <1>;
+	qcom,bt-slim-clk-src-ctrl = <1>;
 	qcom,va-bolero-codec = <1>;
 	qcom,audio-routing =
 		"TX DMIC0", "Digital Mic0",
