@@ -640,6 +640,16 @@
 		dma-coherent;
 	};
 
+	spf_tdm_pri_rx: qcom,spf-msm-dai-tdm-pri-rx {
+		compatible = "qcom,msm-pcm-pinctrl";
+		pinctrl-names = "default", "active";
+		pinctrl-0 = <&pri_tdm_clk_sleep &pri_tdm_sync_sleep
+			 &pri_tdm_din_sleep &pri_tdm_dout_sleep>;
+		pinctrl-1 = <&pri_tdm_clk_active &pri_tdm_sync_active
+			 &pri_tdm_din_active &pri_tdm_dout_active>;
+		#gpio-cells = <0>;
+	};
+
 	spf_tdm_sec_rx: qcom,spf-msm-dai-tdm-sec-rx {
 		compatible = "qcom,msm-pcm-pinctrl";
 		pinctrl-names = "default", "active";
@@ -687,6 +697,7 @@
 		qcom,auxpcm-audio-intf;
 		qcom,msm-mi2s-master = <1>, <1>, <1>, <1>, <1>;
 
+		qcom,pri-tdm-gpios = <&spf_tdm_pri_rx>;
 		qcom,sec-tdm-gpios = <&spf_tdm_sec_rx>;
 		qcom,tert-tdm-gpios = <&spf_tdm_tert_rx>;
 		qcom,quat-tdm-gpios = <&spf_tdm_quat_rx>;

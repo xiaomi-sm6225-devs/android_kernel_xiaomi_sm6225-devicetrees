@@ -19,7 +19,9 @@ dtbo-y += monaco-dmic-audio.dtbo \
 		monaco-slate-atp-v1-audio.dtbo \
 		monaco-slate-dmic-idp-v1-audio.dtbo \
 		monaco-slate-wdp-v1-audio.dtbo \
-		monaco-slate-wsa-idp-v3-audio.dtbo
+		monaco-slate-wsa-idp-v3-audio.dtbo \
+		monaco-wsa-audio.dtbo \
+		monaco-amic-audio-idp-v2.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_SA8155), y)
@@ -29,9 +31,10 @@ endif
 ifeq ($(CONFIG_QTI_QUIN_GVM), y)
 dtbo-y +=  sa8155-vm-audio.dtbo
 dtbo-y +=  sa8195-vm-audio.dtbo
-  ifeq ($(QTI_TECHPACK), y)
-      dtbo-y +=  direwolf-vm-lv-audio.dtbo
-  endif
+dtbo-y +=  direwolf-vm-lv-audio.dtbo
+dtbo-y +=  direwolf-vm-la-audio.dtbo
+dtbo-y +=  lemans-vm-lv-audio.dtbo
+dtbo-y +=  lemans-vm-la-audio.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_LEMANS), y)
