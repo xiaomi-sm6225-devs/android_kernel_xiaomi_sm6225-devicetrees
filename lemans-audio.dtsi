@@ -1,11 +1,68 @@
 #include <bindings/qcom,gpr.h>
 #include "msm-audio-lpass.dtsi"
+#include "lemans-lpi.dtsi"
 
 &soc {
 	spf_core_platform: spf_core_platform {
 		compatible = "qcom,spf-core-platform";
 	};
 
+	spf_tdm_quat: qcom,spf-msm-dai-tdm-quat {
+		compatible = "qcom,msm-pcm-pinctrl";
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&quat_mi2s_sck_active &quat_mi2s_ws_active
+					&quat_mi2s_sd0_active &quat_mi2s_sd1_active
+					&quat_mi2s_sd2_active &quat_mi2s_sd3_active>;
+		pinctrl-1 = <&quat_mi2s_sck_sleep &quat_mi2s_ws_sleep
+					&quat_mi2s_sd0_sleep &quat_mi2s_sd1_sleep
+					&quat_mi2s_sd2_sleep &quat_mi2s_sd3_sleep>;
+		qcom,lpi-gpios;
+		#gpio-cells = <0>;
+	};
+
+	spf_tdm_quin: qcom,spf-msm-dai-tdm-quin {
+		compatible = "qcom,msm-pcm-pinctrl";
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&lpi_i2s1_sck_active &lpi_i2s1_ws_active
+					&lpi_i2s1_sd0_active &lpi_i2s1_sd1_active>;
+		pinctrl-1 = <&lpi_i2s1_sck_sleep &lpi_i2s1_ws_sleep
+					&lpi_i2s1_sd0_sleep &lpi_i2s1_sd1_sleep>;
+		qcom,lpi-gpios;
+		#gpio-cells = <0>;
+	};
+
+	spf_tdm_sen: qcom,spf-msm-dai-tdm-sen {
+		compatible = "qcom,msm-pcm-pinctrl";
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&lpi_i2s2_sck_active &lpi_i2s2_ws_active
+					&lpi_i2s2_sd0_active &lpi_i2s2_sd1_active>;
+		pinctrl-1 = <&lpi_i2s2_sck_sleep &lpi_i2s2_ws_sleep
+					&lpi_i2s2_sd0_sleep &lpi_i2s2_sd1_sleep>;
+		qcom,lpi-gpios;
+		#gpio-cells = <0>;
+	};
+
+	spf_tdm_sep: qcom,spf-msm-dai-tdm-sep {
+		compatible = "qcom,msm-pcm-pinctrl";
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&lpi_i2s3_sck_active &lpi_i2s3_ws_active
+					&lpi_i2s3_sd0_active &lpi_i2s3_sd1_active>;
+		pinctrl-1 = <&lpi_i2s3_sck_sleep &lpi_i2s3_ws_sleep
+					&lpi_i2s3_sd0_sleep &lpi_i2s3_sd1_sleep>;
+		qcom,lpi-gpios;
+		#gpio-cells = <0>;
+	};
+
+	spf_tdm_oct: qcom,spf-msm-dai-tdm-oct {
+		compatible = "qcom,msm-pcm-pinctrl";
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&lpi_i2s4_sck_active &lpi_i2s4_ws_active
+					&lpi_i2s4_sd0_active &lpi_i2s4_sd1_active>;
+		pinctrl-1 = <&lpi_i2s4_sck_sleep &lpi_i2s4_ws_sleep
+					&lpi_i2s4_sd0_sleep &lpi_i2s4_sd1_sleep>;
+		qcom,lpi-gpios;
+		#gpio-cells = <0>;
+	};
 };
 
 &glink_adsp {
@@ -110,6 +167,11 @@
 
 		qcom,sec-tdm-gpios = <&spf_tdm_sec>;
 		qcom,tert-tdm-gpios = <&spf_tdm_tert>;
+		qcom,quat-tdm-gpios = <&spf_tdm_quat>;
+		qcom,quin-tdm-gpios = <&spf_tdm_quin>;
+		qcom,sen-tdm-gpios = <&spf_tdm_sen>;
+		qcom,sep-tdm-gpios = <&spf_tdm_sep>;
+		qcom,oct-tdm-gpios = <&spf_tdm_oct>;
 		qcom,hsif0-tdm-gpios = <&spf_tdm_hsif0>;
 		qcom,hsif1-tdm-gpios = <&spf_tdm_hsif1>;
 		qcom,hsif2-tdm-gpios = <&spf_tdm_hsif2>;
