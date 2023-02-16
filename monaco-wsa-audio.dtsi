@@ -69,6 +69,7 @@
 &monaco_snd {
 	qcom,model = "monaco-idp-wsa-snd-card";
 	qcom,wcn-btfm = <0>;
+	qcom,bt-slim-clk-src-ctrl = <1>;
 	qcom,audio-routing =
 		"SpkrLeft IN", "AUX_OUT",
 		"TX SWR_INPUT", "VA_TX_SWR_CLK",
