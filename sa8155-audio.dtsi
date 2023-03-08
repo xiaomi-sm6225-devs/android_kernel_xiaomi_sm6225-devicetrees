@@ -636,6 +636,21 @@
 	};
 };
 
+&glink_edge_modem {
+	modem_gpr: qcom,modem_gpr {
+		compatible = "qcom,gpr";
+		qcom,glink-channels = "modem_apps";
+		qcom,intents = <0x200 20>;
+		reg = <GPR_DOMAIN_MODEM>;
+
+		ams-modem-pkt {
+			compatible = "qcom,audio-pkt";
+			qcom,audiopkt-ch-name = "apr_modem_ams_svc";
+			reg = <GPR_SVC_MAX>;
+		};
+	};
+};
+
 &spf_core_platform {
 	spf_msm_audio_ion: qcom,spf-msm-audio-ion {
 		compatible = "qcom,msm-audio-ion";
