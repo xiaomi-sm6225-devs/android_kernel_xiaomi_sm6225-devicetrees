@@ -50,7 +50,7 @@
 		interrupt-controller;
 		#interrupt-cells = <1>;
 		interrupt-parent = <&tlmm>;
-		qcom,gpio-connect = <&tlmm 75 0>;
+		qcom,gpio-connect = <&tlmm 48 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&wcd_intr_default>;
 	};
@@ -67,9 +67,9 @@
 		#clock-cells = <1>;
 	};
 
-	wcd_rst_gpio: msm_cdc_pinctrl@77 {
+	wcd_rst_gpio: msm_cdc_pinctrl@49 {
 		compatible = "qcom,msm-cdc-pinctrl";
-		qcom,cdc-rst-n-gpio = <&tlmm 77 0>;
+		qcom,cdc-rst-n-gpio = <&tlmm 49 0>;
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&cdc_reset_active>;
 		pinctrl-1 = <&cdc_reset_sleep>;
@@ -92,23 +92,23 @@
 		clock-names = "wcd_clk";
 		clocks = <&clock_audio_up 0>;
 
-		cdc-vdd-buck-supply = <&pmx75_l6>;
+		cdc-vdd-buck-supply = <&pmx35_l6>;
 		qcom,cdc-vdd-buck-voltage = <1800000 1800000>;
 		qcom,cdc-vdd-buck-current = <650000>;
 
-		cdc-buck-sido-supply = <&pmx75_l6>;
+		cdc-buck-sido-supply = <&pmx35_l6>;
 		qcom,cdc-buck-sido-voltage = <1800000 1800000>;
 		qcom,cdc-buck-sido-current = <500000>;
 
-		cdc-vdd-tx-h-supply = <&pmx75_l6>;
+		cdc-vdd-tx-h-supply = <&pmx35_l6>;
 		qcom,cdc-vdd-tx-h-voltage = <1800000 1800000>;
 		qcom,cdc-vdd-tx-h-current = <25000>;
 
-		cdc-vdd-rx-h-supply = <&pmx75_l6>;
+		cdc-vdd-rx-h-supply = <&pmx35_l6>;
 		qcom,cdc-vdd-rx-h-voltage = <1800000 1800000>;
 		qcom,cdc-vdd-rx-h-current = <25000>;
 
-		cdc-vddpx-1-supply = <&pmx75_l6>;
+		cdc-vddpx-1-supply = <&pmx35_l6>;
 		qcom,cdc-vddpx-1-voltage = <1800000 1800000>;
 		qcom,cdc-vddpx-1-current = <10000>;
 

@@ -22,6 +22,7 @@
 	qcom,mi2s-audio-intf = <1>;
 	qcom,tdm-audio-intf = <0>;
 	qcom,wcn-btfm = <0>;
+	qcom,bt-slim-clk-src-ctrl = <1>;
 	qcom,va-bolero-codec = <1>;
 	qcom,visense-enable = <0>;
 	qcom,audio-routing =
@@ -51,5 +52,4 @@
 	nvmem-cell-names = "adsp_variant";
 	asoc-codec  = <&stub_codec>, <&bolero>, <&besbev_codec>;
 	asoc-codec-names = "msm-stub-codec.1", "bolero_codec", "besbev_codec";
-	qcom,msm_audio_ssr_devs = <&audio_gpr>, <&bolero>, <&lpi_tlmm>;
 };
