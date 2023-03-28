@@ -603,6 +603,12 @@
 	audio_pkt_core_platform: audio-pkt-platform {
 		compatible = "qcom,audio-pkt-core-platform";
 	};
+
+	coupled_ssr: qcom,coupled_ssr {
+		compatible = "qcom,coupled_ssr";
+		status = "ok";
+		qcom,msm-coupled-ssr-group = <&adsp_pas &modem_pas>;
+	};
 };
 
 &glink_edge {
