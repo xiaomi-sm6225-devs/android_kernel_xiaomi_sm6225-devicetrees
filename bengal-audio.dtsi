@@ -51,6 +51,10 @@
 		qcom,iommu-dma-addr-pool = <0x10000000 0x10000000>;
 	};
 
+	msm_audio_ion_cma: qcom,msm-audio-ion-cma {
+		compatible = "qcom,msm-audio-ion-cma";
+	};
+
 	cdc_dmic01_gpios: cdc_dmic01_pinctrl {
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep";
