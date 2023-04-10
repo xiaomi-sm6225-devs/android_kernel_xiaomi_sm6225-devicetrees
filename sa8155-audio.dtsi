@@ -714,6 +714,7 @@
 		qcom,quin-tdm-gpios = <&spf_tdm_quin_rx>;
 		asoc-codec = <&stub_codec>;
 		asoc-codec-names = "msm-stub-codec.1";
+		qcom,msm_audio_ssr_devs = <&audio_gpr>;
 	};
 };
 
