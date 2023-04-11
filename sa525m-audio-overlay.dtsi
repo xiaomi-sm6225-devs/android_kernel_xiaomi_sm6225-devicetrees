@@ -42,6 +42,8 @@
 		pinctrl-0 =  <&i2s_mclk_active &tlv_reset_active &tlv_cdc_power>;
 		asoc-codec = <&tlv320aic3x_codec>, <&stub_codec>;
 		asoc-codec-names = "tlv320aic3x", "msm-stub-codec.1";
+
+		qcom,msm_audio_ssr_devs = <&audio_gpr>;
 	};
 };
 
