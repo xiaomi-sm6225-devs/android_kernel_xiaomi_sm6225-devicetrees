@@ -603,6 +603,12 @@
 	audio_pkt_core_platform: audio-pkt-platform {
 		compatible = "qcom,audio-pkt-core-platform";
 	};
+
+	coupled_ssr: qcom,coupled_ssr {
+		compatible = "qcom,coupled_ssr";
+		status = "ok";
+		qcom,msm-coupled-ssr-group = <&adsp_pas &modem_pas>;
+	};
 };
 
 &glink_edge {
@@ -626,6 +632,21 @@
 		audio_prm: q6prm {
 			compatible = "qcom,audio_prm";
 			reg = <GPR_SVC_ASM>;
+		};
+	};
+};
+
+&glink_edge_modem {
+	modem_gpr: qcom,modem_gpr {
+		compatible = "qcom,gpr";
+		qcom,glink-channels = "modem_apps";
+		qcom,intents = <0x200 20>;
+		reg = <GPR_DOMAIN_MODEM>;
+
+		ams-modem-pkt {
+			compatible = "qcom,audio-pkt";
+			qcom,audiopkt-ch-name = "apr_modem_ams_svc";
+			reg = <GPR_SVC_MAX>;
 		};
 	};
 };
@@ -708,6 +729,7 @@
 		qcom,quin-tdm-gpios = <&spf_tdm_quin_rx>;
 		asoc-codec = <&stub_codec>;
 		asoc-codec-names = "msm-stub-codec.1";
+		qcom,msm_audio_ssr_devs = <&audio_gpr>;
 	};
 };
 

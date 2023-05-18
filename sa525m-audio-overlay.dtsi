@@ -31,17 +31,19 @@
 		snd_tlv3x: sound-auto {
 		compatible = "qcom,sdx-asoc-snd-auto";
 		qcom,model = "sdx-auto-i2s-snd-card";
-		qcom,prim_mi2s_aux_master = <&prim_master>;
+		qcom,prim_mi2s_aux_master = <&prim_master_slave>;
 		qcom,prim_mi2s_aux_slave = <&prim_slave>;
-		qcom,sec_mi2s_aux_master = <&sec_master>;
+		qcom,sec_mi2s_aux_master = <&sec_master_slave>;
 		qcom,sec_mi2s_aux_slave = <&sec_slave>;
-		qcom,tert_mi2s_aux_master = <&tert_master>;
+		qcom,tert_mi2s_aux_master = <&tert_master_slave>;
 		qcom,tert_mi2s_aux_slave = <&tert_slave>;
 
 		pinctrl-names = "default";
 		pinctrl-0 =  <&i2s_mclk_active &tlv_reset_active &tlv_cdc_power>;
 		asoc-codec = <&tlv320aic3x_codec>, <&stub_codec>;
 		asoc-codec-names = "tlv320aic3x", "msm-stub-codec.1";
+
+		qcom,msm_audio_ssr_devs = <&audio_gpr>;
 	};
 };
 

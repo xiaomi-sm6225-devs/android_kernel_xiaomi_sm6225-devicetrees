@@ -30,9 +30,9 @@
 		compatible = "qcom,msm-stub-codec";
 	};
 
-	prim_master: prim_master_pinctrl {
+	prim_master_slave: prim_master_slave_pinctrl {
 		compatible = "qcom,msm-cdc-pinctrl";
-		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-names = "aud_active", "aud_sleep", "aud_alt_active";
 		pinctrl-0 = <&pri_ws_active_master
 				&pri_sck_active_master
 				&pri_dout_active
@@ -41,6 +41,10 @@
 				&pri_sck_sleep
 				&pri_dout_sleep
 				&pri_din_sleep>;
+		pinctrl-2 = <&pri_ws_active_slave
+				&pri_sck_active_slave
+				&pri_dout_active
+				&pri_din_active>;
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
@@ -59,9 +63,9 @@
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
-	sec_master: sec_master_pinctrl {
+	sec_master_slave: sec_master_slave_pinctrl {
 		compatible = "qcom,msm-cdc-pinctrl";
-		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-names = "aud_active", "aud_sleep", "aud_alt_active";
 		pinctrl-0 = <&sec_ws_active_master
 				&sec_sck_active_master
 				&sec_dout_active
@@ -70,6 +74,10 @@
 				&sec_sck_sleep
 				&sec_dout_sleep
 				&sec_din_sleep>;
+		pinctrl-2 = <&sec_ws_active_slave
+				&sec_sck_active_slave
+				&sec_dout_active
+				&sec_din_active>;
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
@@ -88,9 +96,9 @@
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
-	tert_master: tert_master_pinctrl {
+	tert_master_slave: tert_master_slave_pinctrl {
 		compatible = "qcom,msm-cdc-pinctrl";
-		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-names = "aud_active", "aud_sleep", "aud_alt_active";
 		pinctrl-0 = <&tert_ws_active_master
 				&tert_sck_active_master
 				&tert_dout_active
@@ -99,6 +107,10 @@
 				&tert_sck_sleep
 				&tert_dout_sleep
 				&tert_din_sleep>;
+		pinctrl-2 = <&tert_ws_active_slave
+				&tert_sck_active_slave
+				&tert_dout_active
+				&tert_din_active>;
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
