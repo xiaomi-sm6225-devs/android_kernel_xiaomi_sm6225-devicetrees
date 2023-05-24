@@ -26,6 +26,12 @@ dtbo-y += nxp/khaje-nfc-idp.dtbo \
           nxp/khaje-nfc-qrd-nowcd9375.dtbo
 endif
 
+ifeq ($(CONFIG_ARCH_CROWXYZ),y)
+dtbo-y += st/crow-nfc.dtbo \
+	  st/crow-nfc-atp.dtbo \
+	  st/crow-nfc-idp.dtbo
+endif
+
 always-y	:= $(dtb-y) $(dtbo-y)
 subdir-y	:= $(dts-dirs)
 clean-files	:= *.dtb *.dtbo
