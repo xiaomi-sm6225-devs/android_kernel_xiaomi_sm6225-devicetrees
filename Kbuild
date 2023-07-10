@@ -38,7 +38,8 @@ dtbo-y += nxp/crow-nfc.dtbo \
           nxp/crow-nfc-atp.dtbo \
           nxp/crow-nfc-idp.dtbo \
           nxp/crow-nfc-idp-wcd9395-wcd-dmic.dtbo \
-          nxp/crow-nfc-qrd.dtbo
+          nxp/crow-nfc-qrd.dtbo \
+          nxp/crow-nfc-rcm.dtbo
 endif
 
 always-y	:= $(dtb-y) $(dtbo-y)
