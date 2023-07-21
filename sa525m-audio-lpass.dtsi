@@ -99,18 +99,18 @@
 	tert_master_slave: tert_master_slave_pinctrl {
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep", "aud_alt_active";
-		pinctrl-0 = <&tert_ws_active_master
-				&tert_sck_active_master
-				&tert_dout_active
-				&tert_din_active>;
-		pinctrl-1 = <&tert_ws_sleep
-				&tert_sck_sleep
-				&tert_dout_sleep
-				&tert_din_sleep>;
-		pinctrl-2 = <&tert_ws_active_slave
-				&tert_sck_active_slave
-				&tert_dout_active
-				&tert_din_active>;
+		pinctrl-0 = <&tri_ws_active_master
+				&tri_sck_active_master
+				&tri_dout_active
+				&tri_din_active>;
+		pinctrl-1 = <&tri_ws_sleep
+				&tri_sck_sleep
+				&tri_dout_sleep
+				&tri_din_sleep>;
+		pinctrl-2 = <&tri_ws_active_slave
+				&tri_sck_active_slave
+				&tri_dout_active
+				&tri_din_active>;
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
@@ -118,14 +118,14 @@
 		status = "disabled";
 		compatible = "qcom,msm-cdc-pinctrl";
 		pinctrl-names = "aud_active", "aud_sleep";
-		pinctrl-0 = <&tert_ws_active_slave
-				&tert_sck_active_slave
-				&tert_dout_active
-				&tert_din_active>;
-		pinctrl-1 = <&tert_ws_sleep
-				&tert_sck_sleep
-				&tert_dout_sleep
-				&tert_din_sleep>;
+		pinctrl-0 = <&tri_ws_active_slave
+				&tri_sck_active_slave
+				&tri_dout_active
+				&tri_din_active>;
+		pinctrl-1 = <&tri_ws_sleep
+				&tri_sck_sleep
+				&tri_dout_sleep
+				&tri_din_sleep>;
 		qcom,mi2s-auxpcm-cdc-gpios;
 	};
 
