@@ -55,6 +55,9 @@ dtbo-$(CONFIG_ARCH_MONACO) += display/monaco-sde.dtbo \
 		display/monaco-sde-display-idp-overlay.dtbo \
 		display/monaco-sde-display-wdp-overlay.dtbo
 
+dtbo-$(CONFIG_ARCH_TRINKET) += display/trinket-sde.dtbo \
+		display/trinket-sde-display-iot-idp-overlay.dtbo
+
 always-y    := $(dtb-y) $(dtbo-y)
 subdir-y    := $(dts-dirs)
 clean-files    := *.dtb *.dtbo
