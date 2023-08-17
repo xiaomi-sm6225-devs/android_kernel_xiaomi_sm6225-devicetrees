@@ -39,7 +39,9 @@ dtbo-y +=  lemans-vm-la-audio.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_LEMANS), y)
+ifneq ($(CONFIG_ARCH_QTI_VM), y)
 dtbo-y +=  lemans-audio.dtbo
+endif
 endif
 
 ifeq ($(CONFIG_ARCH_KHAJE), y)

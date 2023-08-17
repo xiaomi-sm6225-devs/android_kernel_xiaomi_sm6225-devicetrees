@@ -1,10 +1,5 @@
 #include "msm-auto-vm-audio-lpass.dtsi"
 
-&msm_audio_ion {
-	iommus = <&apps_smmu 0x0c01 0x0>;
-	qcom,smmu-sid-mask = /bits/ 64 <0xf>;
-	/delete-property/ qcom,iommu-dma-addr-pool;
-};
 
 &tdm_sen_rx {
 	compatible = "qcom,msm-dai-tdm";
