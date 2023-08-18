@@ -243,6 +243,7 @@
 		iommus = <&apps_smmu 0x400 0x0>;
 		qcom,iommu-dma-addr-pool = <0x00020000 0xfffe0000>;
 		qcom,iommu-faults = "non-fatal";
+		qcom,iommu-earlymap; /* for cont-splash */
 	};
 
 	mdss_dsi0: qcom,mdss_dsi_ctrl0@5e94000 {
