@@ -1,5 +1,5 @@
 &mdss_mdp {
-	dsi_td4330_truly_cmd: qcom,mdss_dsi_td4330_truly_cmd {
+	dsi_td4330_truly_cmd: dsi_td4330_truly_cmd_display {
 		qcom,mdss-dsi-panel-name =
 			"td4330 cmd mode dsi truly panel";
 		qcom,mdss-dsi-panel-type = "dsi_cmd_mode";
