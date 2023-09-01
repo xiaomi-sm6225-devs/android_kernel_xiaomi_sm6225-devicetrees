@@ -123,6 +123,7 @@
 		pinctrl-1 = <&hs0_i2s_sck_active &hs0_i2s_ws_active
 					&hs0_i2s_data0_active &hs0_i2s_data1_active>;
 		#gpio-cells = <0>;
+		status = "disabled";
 	};
 
 	spf_tdm_hsif1: qcom,spf-msm-dai-tdm-hsif1 {
@@ -133,6 +134,7 @@
 		pinctrl-1 = <&hs1_i2s_sck_active &hs1_i2s_ws_active
 					&hs1_i2s_data0_active &hs1_i2s_data1_active>;
 		#gpio-cells = <0>;
+		status = "disabled";
 	};
 
 	spf_tdm_hsif2: qcom,spf-msm-dai-tdm-hsif2 {
