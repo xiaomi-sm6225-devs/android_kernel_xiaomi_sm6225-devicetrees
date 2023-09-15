@@ -63,8 +63,11 @@ dtbo-y += khaje-audio.dtbo \
 		khaje-audio-atp.dtbo \
 		khaje-audio-idp-pm8010.dtbo \
 		khaje-audio-idp-usbc.dtbo \
-		khaje-nowcd.dtbo \
-                tapas-audio-idp-nopmi-overlay.dtbo \
+		khaje-nowcd.dtbo
+endif
+
+ifeq ($(CONFIG_TOPAZ_DTB),y)
+dtbo-y += tapas-audio-idp-nopmi-overlay.dtbo \
 		topaz-audio-idp-nopmi-overlay.dtbo
 endif
 
