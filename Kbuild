@@ -7,6 +7,10 @@ ifeq ($(CONFIG_ARCH_KALAMA),y)
 dtbo-y += kalama-cnss.dtbo
 endif
 
+ifeq ($(CONFIG_ARCH_QCS405),y)
+dtbo-y += qcs405-icnss.dtbo
+endif
+
 ifeq ($(CONFIG_ARCH_KHAJE),y)
 dtbo-y += khaje-cnss.dtbo
 endif
@@ -37,6 +41,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE),y)
 dtbo-y += pineapple-kiwi-cnss.dtbo
+dtbo-y += pineapplep-hdk-kiwi-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_MONACO),y)

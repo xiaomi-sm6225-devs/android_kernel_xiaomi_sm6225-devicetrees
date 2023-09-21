@@ -82,8 +82,6 @@
 		qcom,vdd-wlan-rfa1-config = <1864000 1864000 0 0 1>;
 		vdd-wlan-rfa2-supply = <&S1C>;
 		qcom,vdd-wlan-rfa2-config = <1316000 1316000 0 0 1>;
-		vdd-wlan-ant-share-supply = <&L6K>;
-		qcom,vdd-wlan-ant-share-config = <1800000 1800000 0 0 1>;
 
 		interconnects =
 		<&pcie_noc MASTER_PCIE_0 &pcie_noc SLAVE_ANOC_PCIE_GEM_NOC>,
@@ -183,7 +181,7 @@
 			qcom,iommu-geometry = <0xa0000000 0x10010000>;
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-pagetable = "coherent";
-			qcom,iommu-faults = "stall-disable", "HUPCF",
+			qcom,iommu-faults = "stall-disable", "HUPCF", "no-CFRE",
 					    "non-fatal";
 		};
 	};
