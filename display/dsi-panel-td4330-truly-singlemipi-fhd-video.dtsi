@@ -1,5 +1,5 @@
 &mdss_mdp {
-	dsi_td4330_truly_video: qcom,mdss_dsi_td4330_truly_video {
+	dsi_td4330_truly_video: dsi_td4330_truly_vid_display {
 		qcom,mdss-dsi-panel-name =
 			"td4330 video mode dsi truly panel";
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
