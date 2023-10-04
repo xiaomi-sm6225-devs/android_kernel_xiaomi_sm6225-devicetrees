@@ -30,3 +30,9 @@
 &mdss_mdp {
 	connectors = <&sde_dsi &sde_wb>;
 };
+
+&qupv3_se2_i2c {
+	synaptics_tcm@20 {
+		panel = <&dsi_td4330_truly_video>;
+	};
+};
