@@ -4158,7 +4158,6 @@ tpdm_turing_llm: tpdm@8861000 {
 			bias-high-impedance;
 		};
 	};
-
 };
 
 &spmi_bus {

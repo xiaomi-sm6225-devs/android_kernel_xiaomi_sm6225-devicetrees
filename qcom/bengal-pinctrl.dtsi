@@ -470,6 +470,34 @@
 		};
 
 
+	qupv3_se4_i2c_pins:
+		qupv3_se4_i2c_pins {
+		qupv3_se4_i2c_active:
+			qupv3_se4_i2c_active {
+				mux {
+					pins = "gpio96","gpio97";
+					function = "qup4";
+				};
+				config {
+					pins = "gpio96","gpio97";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
+		qupv3_se4_i2c_sleep:
+			qupv3_se4_i2c_sleep {
+				mux {
+					pins = "gpio96","gpio97";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio96","gpio97";
+					drive-strength = <2>;
+					bias-pull-up;
+				};
+			};
+		};
+
 		qupv3_se2_i2c_pins: qupv3_se2_i2c_pins {
 			qupv3_se2_i2c_active: qupv3_se2_i2c_active {
 				mux {
@@ -933,6 +961,95 @@
 				bias-pull-down; /* PULL DOWN */
 				drive-strength = <2>; /* 2 MA */
 				output-low;
+			};
+		};
+
+                cam_sensor_rear2_vio_active: cam_sensor_rear2_vio_active {
+                        config {
+                                bias-disable;
+                                drive-strength = <2>;
+                                pins = "gpio99";
+                        };
+
+                        mux {
+                                function = "gpio";
+                                pins = "gpio99";
+                        };
+                };
+
+                cam_sensor_rear2_vio_suspend: cam_sensor_rear2_vio_suspend {
+                        config {
+                                bias-pull-down;
+                                drive-strength = <2>;
+                                output-low;
+                                pins = "gpio99";
+                        };
+
+                        mux {
+                                function = "gpio";
+                                pins = "gpio99";
+                        };
+                };
+
+
+		cam_sensor_rear0_vaf_active: cam_sensor_rear0_vaf_active {
+			mux {
+				pins = "gpio101";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio101";
+				bias-pull-up;
+				drive-strength = <0x02>;
+				output-high;
+			};
+		};
+
+		cam_sensor_rear0_vaf_suspend: cam_sensor_rear0_vaf_suspend {
+			mux {
+				pins = "gpio101";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio101";
+				bias-pull-down;
+				drive-strength = <2>;
+				output-low;
+			};
+		};
+
+		pmx_lcm1p8en_active {
+		lcm1p8en_active:
+			lcm1p8en_active {
+				mux {
+					pins = "gpio54";
+					function = "gpio";
+				};
+				
+				config {
+					pins = "gpio54";
+					drive-strength = <2>;
+					bias-pull-up;
+					output-high;
+				};
+			};
+		};
+
+		pmx_ts_avdd: pmx_ts_avdd {
+			ts_avdd: ts_avdd {
+				mux {
+					pins = "gpio36";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio36";
+					drive-strength = <0x08>;
+					bias-pull-up;
+					output-high;
+				};
 			};
 		};
 

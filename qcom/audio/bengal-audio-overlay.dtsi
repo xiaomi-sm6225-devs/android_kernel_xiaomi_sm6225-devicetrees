@@ -154,9 +154,9 @@
 		qcom,cdc-vdd-buck-voltage = <1800000 1800000>;
 		qcom,cdc-vdd-buck-current = <650000>;
 
-		qcom,cdc-micbias1-mv = <1800>;
-		qcom,cdc-micbias2-mv = <1800>;
-		qcom,cdc-micbias3-mv = <1800>;
+		qcom,cdc-micbias1-mv = <2700>;
+		qcom,cdc-micbias2-mv = <2700>;
+		qcom,cdc-micbias3-mv = <2700>;
 
 		qcom,cdc-static-supplies = "cdc-vdd-rxtx",
 					   "cdc-vddpx";
@@ -193,21 +193,12 @@
 			"RX_TX DEC1_INP", "TX DEC1 MUX",
 			"RX_TX DEC2_INP", "TX DEC2 MUX",
 			"RX_TX DEC3_INP", "TX DEC3 MUX",
-			"SpkrMono WSA_IN", "AUX",
 			"TX SWR_INPUT", "WCD_TX_OUTPUT",
 			"VA SWR_INPUT", "VA_SWR_CLK",
 			"VA SWR_INPUT", "WCD_TX_OUTPUT",
 			"TX_AIF1 CAP", "VA_SWR_CLK",
 			"TX_AIF2 CAP", "VA_SWR_CLK",
-			"TX_AIF3 CAP", "VA_SWR_CLK",
-			"VA DMIC0", "Digital Mic0",
-			"VA DMIC1", "Digital Mic1",
-			"VA DMIC2", "Digital Mic2",
-			"VA DMIC3", "Digital Mic3",
-			"VA DMIC0", "VA MIC BIAS1",
-			"VA DMIC1", "VA MIC BIAS1",
-			"VA DMIC2", "VA MIC BIAS3",
-			"VA DMIC3", "VA MIC BIAS3";
+			"TX_AIF3 CAP", "VA_SWR_CLK";
 		qcom,msm-mbhc-usbc-audio-supported = <0>;
 		qcom,msm-mbhc-hphl-swh = <1>;
 		qcom,msm-mbhc-gnd-swh = <1>;
@@ -218,14 +209,18 @@
 		nvmem-cell-names = "adsp_variant";
 
 		asoc-codec  = <&stub_codec>, <&bolero_cdc>,
-				<&wcd937x_codec> , <&wsa881x_i2c_e>;
+				<&wcd937x_codec>;
 		asoc-codec-names = "msm-stub-codec.1", "bolero-codec",
-				"wcd937x_codec", "wsa-codec0";
-		qcom,wsa-max-devs = <1>;
+				"wcd937x_codec";
+		qcom,wsa-max-devs = <0>;
 		//qcom,wsa-devs = <&wsa881x_i2c_e>;
 		qcom,wsa-aux-dev-prefix = "SpkrMono";
 		qcom,msm_audio_ssr_devs = <&audio_gpr>, <&lpi_tlmm>,
 					<&bolero_cdc>;
+
+		si,sia81xx-aux-devs = <&si_pa_L>;
+		si,sia81xx-aux-devs-prefix = "SpkrMonoL";
+		si,sia81xx-max-num = <1>;
 	};
 
 	cdc_pri_mi2s_gpios: pri_mi2s_pinctrl {
@@ -252,6 +247,28 @@
 };
 
 &qupv3_se1_i2c {
+	aw87xxx_pa_59@59 {
+		aw-rx-port-id = <0xb032>;
+		compatible = "awinic,aw87xxx_pa";
+		dev_index = <0>;
+		reg = <0x59>;
+		reset-gpio = <&tlmm 106 0>;
+		status = "okay";
+	};
+
+	fs16xx@34 {
+		compatible = "foursemi,fs16xx";
+                fsm,rst-gpio = <&tlmm 106 0>;
+		reg = <0x34>;
+		status = "okay";
+	};
+
+	sipa_i2c_L: sipa_i2c_L@2b {
+		compatible = "si,sia81xx-i2c";
+		reg = <0x2b>;
+		si,sipa-dev = <&si_pa_L>;
+	};
+
 	wsa881x_i2c_e: wsa881x-i2c-codec@e {
 		compatible = "qcom,wsa881x-i2c-codec";
 		reg = <0x0e>;
@@ -260,11 +277,13 @@
 		qcom,wsa-analog-clk-gpio = <&wsa881x_analog_clk_gpio>;
 		qcom,wsa-analog-reset-gpio = <&wsa881x_analog_reset_gpio>;
 		qcom,wsa-prefix = "SpkrMono";
+		status = "disable";
 	};
 
 	wsa881x_i2c_44: wsa881x-i2c-codec@44 {
 		compatible = "qcom,wsa881x-i2c-codec";
 		reg = <0x044>;
+		status = "disable";
 	};
 };
 
@@ -283,6 +302,7 @@
 		pinctrl-0 = <&spkr_1_sd_n_active>;
 		pinctrl-1 = <&spkr_1_sd_n_sleep>;
 		#gpio-cells = <0>;
+                status = "disable";
 	};
 
 	wsa881x_analog_clk: wsa_ana_clk {
@@ -291,6 +311,7 @@
 		qcom,codec-lpass-ext-clk-freq = <9600000>;
 		qcom,codec-lpass-clk-id = <0x301>;
 		#clock-cells = <1>;
+                status = "disable";
 	};
 
 	clock_audio_rx_1: rx_core_clk {
@@ -307,6 +328,16 @@
 		qcom,codec-lpass-ext-clk-freq = <22579200>;
 		qcom,codec-lpass-clk-id = <0x30F>;
 		#clock-cells = <1>;
+	};
+
+	si_pa_L: si_pa_L {
+		channel_num = <0>;
+		compatible = "si,sia81xx";
+		owi_mode = <1>;
+		si,si_pa_disable_pin = <1>;
+		si,si_pa_reset = <&tlmm 106 0>;
+		si,si_pa_type = "sia81x9";
+		timer_task_hdl = <0>;
 	};
 
 	clock_audio_tx_1: tx_core_clk {

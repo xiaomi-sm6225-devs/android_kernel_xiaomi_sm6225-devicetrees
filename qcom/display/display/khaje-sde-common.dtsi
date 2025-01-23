@@ -16,7 +16,7 @@
 		interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-controller;
 		#interrupt-cells = <1>;
-
+	        #cooling-cells = <2>;
 		#power-domain-cells = <0>;
 		#list-cells = <1>;
 

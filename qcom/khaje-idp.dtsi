@@ -4,10 +4,6 @@
 #include <dt-bindings/clock/qcom,gcc-khaje.h>
 #include "bengal-thermal-overlay.dtsi"
 
-&qupv3_se4_2uart {
-	status = "ok";
-};
-
 &pm6125_vadc {
 	pinctrl-0 = <&camera_therm_default &emmc_therm_default &rf_pa1_therm_default>;
 
@@ -48,7 +44,100 @@
 	};
 };
 
+&tlmm {
+		/* Topaz Goodix/FPC1020 fingerprint pinctrl */
+		msm_gpio_104:msm_gpio_104 {
+			mux {
+				pins = "gpio104";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio104";
+				drive-strength = <2>; /* 2 MA */
+				bias-disable; /* No PULL */
+				output-low;
+			};
+		};
+
+		msm_gpio_104_output_high:msm_gpio_104_output_high {
+			mux {
+				pins = "gpio104";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio104";
+				drive-strength = <2>; /* 2 MA */
+				bias-disable; /* No PULL */
+				output-high;
+			};
+		};
+
+		msm_gpio_83:msm_gpio_83 {
+			mux {
+				pins = "gpio83";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio83";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down; /* PULL DOWN */
+			};
+		};
+
+		msm_gpio_65:msm_gpio_65 {
+			mux {
+				pins = "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio65";
+				drive-strength = <2>; /* 2 MA */
+				bias-disable;
+				output-low;
+			};
+		};
+
+		msm_gpio_65_output_high:msm_gpio_65_output_high {
+                        mux {
+                                pins = "gpio65";
+                                function = "gpio";
+                        };
+
+                        config {
+                                pins = "gpio65";
+                                drive-strength = <2>; /* 2 MA */
+                                bias-disable;
+                                output-high;
+                        };
+                };
+};
+
 &pm6125_gpios {
+	oled_vci {
+		oled_vci_default:oled_vci_default {
+			pins = "gpio9";
+			function = "normal";
+			input-disable;
+			power-source = <0>;
+			bias-disable;
+			output-high;
+			qcom,drive-strength = <2>;
+		};
+
+		oled_vci_suspend:oled_vci_suspend {
+			pins = "gpio9";
+			function = "normal";
+			input-disable;
+			power-source = <0>;
+			bias-disable;
+			output-low;
+			qcom,drive-strength = <2>;
+		};
+	};
 
 	rf_pa1_therm {
 		rf_pa1_therm_default: rf_pa1_therm_default {
@@ -77,6 +166,15 @@
 			output-high;
 		};
 	};
+
+	vib_out_gpio8 {
+		vib_out_gpio8_default: vib_out_gpio8_default {
+			bias-pull-up;
+			function = "normal";
+			pins = "gpio8";
+			power-source = <0>;
+	        };
+	};
 };
 
 &soc {
@@ -98,6 +196,22 @@
 		};
 	};
 
+	ant_check {
+		compatible = "ant_check";
+		ant_check_gpio = <&tlmm 107 0>;
+	        interrupt-parent = <&tlmm>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&ant_check_default>;
+	};
+
+	ant_check_div {
+		compatible = "ant_check_div";
+		ant_check_div_gpio = <&tlmm 25 0>;
+	        interrupt-parent = <&tlmm>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&ant_check_div_default>;
+	};
+
 	vdda_usb_ss_dp_core: vdda_usb_ss_dp_core {
 		compatible = "regulator-fixed";
 		regulator-name = "vdd_supply";
@@ -108,54 +222,61 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&usb_eldo9>;
 	};
+
+	vibrator_gpio: vibrator_gpio {
+		compatible = "qcom,qpnp-vibrator-ldo-tz";
+		pinctrl-0 = <&vib_out_gpio8_default>;
+		pinctrl-names = "default";
+		status = "ok";
+		vib,en-gpio = <&pm6125_gpios 8 1>;
+	};
+
+	fpc1020 {
+		compatible = "fpc,fpc1020";
+		fpc,enable-on-boot;
+		fpc,gpio_irq = <&tlmm 83 0>;
+		fpc,gpio_rst = <&tlmm 104 0>;
+		fpc,gpio_vdd_for_plsensor = <&tlmm 65 0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <83 0>;
+		pinctrl-0 = <&msm_gpio_104>;
+		pinctrl-1 = <&msm_gpio_104_output_high>;
+		pinctrl-2 = <&msm_gpio_83>;
+		pinctrl-names = "fpc1020_reset_reset",
+				"fpc1020_reset_active",
+				"fpc1020_irq_active";
+		status = "ok";
+		vcc_spi-supply = <&pm6125_l9>;
+		vdd_ana-supply = <&pm6125_l9>;
+		vdd_io-supply = <&pm6125_l9>;
+	};
+
+	goodix_fp {
+		compatible = "goodix,fingerprint";
+		fp-gpio-irq = <&tlmm 83 0>;
+		fp-gpio-pwr = <&tlmm 65 0>;
+		fp-gpio-reset = <&tlmm 104 0>;
+		interrupt = <83 0>;
+		interrupt-parent = <&tlmm>;
+		pinctrl-0 = <&msm_gpio_104>;
+		pinctrl-1 = <&msm_gpio_104_output_high>;
+		pinctrl-2 = <&msm_gpio_65>;
+		pinctrl-3 = <&msm_gpio_65_output_high>;
+		pinctrl-names = "goodix_reset_outputlow", "goodix_reset_outputhigh", "goodix_pwr_outputlow", "goodix_pwr_outputhigh";
+		status = "okay";
+                vcc_spi_supply = <&pm6125_l9>;
+                vcc_ana_supply = <&pm6125_l9>;
+                vdd_io-supply = <&pm6125_l9>;
+	};
+
+	thermal_message:
+		thermal-message {
+			board-sensor = "VIRTUAL-SENSOR";
+		};
 };
 
 &usb_qmp_dp_phy {
 	vdd-supply = <&vdda_usb_ss_dp_core>;
-};
-
-&qupv3_se1_i2c {
-	awinic@64 {
-		compatible = "awinic,aw2016_led";
-		reg = <0x64>;
-
-		awinic,red {
-			awinic,name = "red";
-			awinic,id = <0>;
-			awinic,imax = <2>;
-			awinic,led-current = <3>;
-			awinic,max-brightness = <255>;
-			awinic,rise-time-ms = <6>;
-			awinic,hold-time-ms = <0>;
-			awinic,fall-time-ms = <6>;
-			awinic,off-time-ms = <4>;
-		};
-
-		awinic,green {
-			awinic,name = "green";
-			awinic,id = <1>;
-			awinic,imax = <2>;
-			awinic,led-current = <3>;
-			awinic,max-brightness = <255>;
-			awinic,rise-time-ms = <6>;
-			awinic,hold-time-ms = <0>;
-			awinic,fall-time-ms = <6>;
-			awinic,off-time-ms = <4>;
-		};
-
-		awinic,blue {
-			awinic,name = "blue";
-			awinic,id = <2>;
-			awinic,imax = <2>;
-			awinic,led-current = <3>;
-			awinic,max-brightness = <255>;
-			awinic,rise-time-ms = <6>;
-			awinic,hold-time-ms = <0>;
-			awinic,fall-time-ms = <6>;
-			awinic,off-time-ms = <4>;
-		};
-
-	};
 };
 
 &sdhc_1 {
@@ -222,7 +343,6 @@
 	qcom,vddp-ref-clk-max-microamp = <100>;
 
 	reset-gpios = <&tlmm 113 GPIO_ACTIVE_LOW>;
-	resets = <&gcc GCC_UFS_PHY_BCR>;
 	reset-names = "rst";
 
 	status = "ok";
@@ -239,6 +359,7 @@
 	synaptics_tcm@20 {
 		compatible = "synaptics,tcm-i2c";
 		reg = <0x20>;
+		status = "disable";
 		interrupt-parent = <&tlmm>;
 		interrupts = <80 0x2008>;
 		pinctrl-names = "pmx_ts_active","pmx_ts_suspend",
@@ -256,12 +377,11 @@
 		synaptics,ubl-i2c-addr = <0x20>;
 		synaptics,extend_report;
 		synaptics,firmware-name = "synaptics_firmware_k.img";
-
 	};
 
 	novatek@62 {
 		reg = <0x62>;
-		status = "ok";
+		status = "disabled";
 
 		interrupt-parent = <&tlmm>;
 		interrupts = <80 0x2008>;
