@@ -4,7 +4,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "khaje-camera-sensor-idp.dtsi"
+#include "topaz-khaje-camera-sensor.dtsi"
 
 / {
         model = "Qualcomm Technologies, Inc. KHAJE IDP nopmi topaz";
